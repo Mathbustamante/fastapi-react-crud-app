@@ -1,0 +1,10 @@
+.DS_Store
+
+/server/__pycache__
+/server/env/
+/server/*.db
+/server/.pytest_cache/
+
+/client/node_modules
+/client/dist
+/client/coverage
