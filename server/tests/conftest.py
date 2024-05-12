@@ -34,7 +34,7 @@ def test_db_setup_teardown():
             email="johndoe@gmail.com",
             age=25,
             marital_status="single",
-            address="123 Main St"
+            address="1017 HR Rotterdam"
         )
         session.add(user)
         session.commit()

@@ -40,7 +40,7 @@ describe("User Data Table Component", () => {
               email: "johndoe@gmail.com",
               age: 25,
               marital_status: MaritalStatus.Single,
-              address: "123 Main St",
+              address: "1017 HR Rotterdam",
             },
           ]}
           isLoading={false}

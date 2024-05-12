@@ -14,7 +14,7 @@ describe("User Form Dialog Component", () => {
           email: "johndoe@gmail.com",
           age: 25,
           marital_status: MaritalStatus.Single,
-          address: "123 Main St",
+          address: "1017 HR Rotterdam",
         }}
         onSubmit={jest.fn()}
         setOpen={jest.fn()}
@@ -52,7 +52,7 @@ describe("User Form Dialog Component", () => {
       name: "Address",
     })
     expect(addressInput).toBeInTheDocument()
-    expect(addressInput).toHaveValue("123 Main St")
+    expect(addressInput).toHaveValue("1017 HR Rotterdam")
   })
 
   it("should disable the submit button if the form is disabled", () => {
@@ -64,7 +64,7 @@ describe("User Form Dialog Component", () => {
           email: "johndoe@gmail.com",
           age: 25,
           marital_status: MaritalStatus.Single,
-          address: "123 Main St",
+          address: "1017 HR Rotterdam",
         }}
         onSubmit={jest.fn()}
         setOpen={jest.fn()}

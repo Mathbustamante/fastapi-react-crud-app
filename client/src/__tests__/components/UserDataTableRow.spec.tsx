@@ -20,7 +20,7 @@ describe("User Data Table Row Component", () => {
                 email: "johndoe@gmail.com",
                 age: 25,
                 marital_status: MaritalStatus.Single,
-                address: "123 Main St",
+                address: "1017 HR Rotterdam",
               }}
             />
           </tbody>
@@ -43,7 +43,7 @@ describe("User Data Table Row Component", () => {
     const maritalStatus = screen.getByText("single")
     expect(maritalStatus).toBeInTheDocument()
 
-    const address = screen.getByText("123 Main St")
+    const address = screen.getByText("1017 HR Rotterdam")
     expect(address).toBeInTheDocument()
   })
 
@@ -60,7 +60,7 @@ describe("User Data Table Row Component", () => {
                 email: "johndoe@gmail.com",
                 age: 25,
                 marital_status: MaritalStatus.Single,
-                address: "123 Main St",
+                address: "1017 HR Rotterdam",
               }}
             />
           </tbody>

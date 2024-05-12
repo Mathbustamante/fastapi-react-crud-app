@@ -5,6 +5,27 @@ def test_root():
     assert response.status_code == 200
     assert response.json() == {"message": "Welcome to my API!"}
 
+def test_get_users(test_db_setup_teardown):
+    response = client.get("/api/users")
+    data = response.json()
+    assert response.status_code == 200
+    assert data["status"] == "success"
+    assert len(data["users"]) == 1
+    
+def test_get_user(test_db_setup_teardown):
+    response = client.get(f"/api/users/4d9386e1-0eb5-4938-86b1-fbd119cbef3b")
+    data = response.json()
+    assert response.status_code == 200
+    assert data["status"] == "success"
+    assert data["user"]["id"] == "4d9386e1-0eb5-4938-86b1-fbd119cbef3b"
+    assert data["user"]["first_name"] == "John"
+    assert data["user"]["last_name"] == "Doe"
+    assert data["user"]["email"] == "johndoe@gmail.com"
+    assert data["user"]["age"] == 25
+    assert data["user"]["marital_status"] == "single"
+    assert data["user"]["address"] == "1017 HR Rotterdam"
+
+
 def test_create_user(test_db_setup_teardown):
     response = client.post("/api/users", json={
         "first_name": "Tim",
@@ -12,7 +33,7 @@ def test_create_user(test_db_setup_teardown):
         "email": "timcook@apple.com",
         "age": 55,
         "marital_status": "single",
-        "address": "123 Main St"
+        "address": "1017 HR Rotterdam"
     })
     data = response.json()
     assert response.status_code == 201
@@ -22,7 +43,7 @@ def test_create_user(test_db_setup_teardown):
     assert data["user"]["email"] == "timcook@apple.com"
     assert data["user"]["age"] == 55
     assert data["user"]["marital_status"] == "single"
-    assert data["user"]["address"] == "123 Main St"
+    assert data["user"]["address"] == "1017 HR Rotterdam"
 
 def test_update_user(test_db_setup_teardown):
     response = client.put(f"/api/users/4d9386e1-0eb5-4938-86b1-fbd119cbef3b", json={
@@ -31,7 +52,7 @@ def test_update_user(test_db_setup_teardown):
         "email": "newtimcook@apple.com",
         "age": 100,
         "marital_status": "married",
-        "address": "123 Main St"
+        "address": "1017 HR Rotterdam"
     })
     data = response.json()
     assert response.status_code == 200
@@ -41,22 +62,23 @@ def test_update_user(test_db_setup_teardown):
     assert data["user"]["email"] == "newtimcook@apple.com"
     assert data["user"]["age"] == 100
     assert data["user"]["marital_status"] == "married"
-    assert data["user"]["address"] == "123 Main St"
+    assert data["user"]["address"] == "1017 HR Rotterdam"
     
 def test_delete_user(test_db_setup_teardown):
     response = client.delete(f"/api/users/4d9386e1-0eb5-4938-86b1-fbd119cbef3b")
     assert response.status_code == 200
     
-    assert response.json() == {"status": "success", "user": {
-        "id": "4d9386e1-0eb5-4938-86b1-fbd119cbef3b",
-        "first_name": "John",
-        "last_name": "Doe",
-        "email": "johndoe@gmail.com",
-        "age": 25,
-        "marital_status": "single",
-        "address": "123 Main St"
-    }}
+    data = response.json()
+    assert data["status"] == "success"  
+    assert data["user"]["id"] == "4d9386e1-0eb5-4938-86b1-fbd119cbef3b"
+    assert data["user"]["first_name"] == "John"
+    assert data["user"]["last_name"] == "Doe"
+    assert data["user"]["email"] == "johndoe@gmail.com"
+    assert data["user"]["age"] == 25
+    assert data["user"]["marital_status"] == "single"
+    assert data["user"]["address"] == "1017 HR Rotterdam"
     response.status_code == 200
+
     response = client.get("/api/users")
     data = response.json()
     assert len(data["users"]) == 0
@@ -68,7 +90,7 @@ def test_create_user_with_duplicate_email(test_db_setup_teardown):
         "email": "johndoe@gmail.com",
         "age": 55,
         "marital_status": "single",
-        "address": "123 Main St"
+        "address": "1017 HR Rotterdam"
     })
     data = response.json()
     assert response.status_code == 400
@@ -136,7 +158,7 @@ def test_update_user_with_duplicate_email(test_db_setup_teardown):
         "email": "johndoe@gmail.com",
         "age": 100,
         "marital_status": "married",
-        "address": "123 Main St"
+        "address": "1017 HR Rotterdam"
     })
     assert response.status_code == 200
     
@@ -146,7 +168,7 @@ def test_update_user_with_duplicate_email(test_db_setup_teardown):
         "email": "maxvettel@gmail.com",
         "age": 22,
         "marital_status": "single",
-        "address": "123 Main St"
+        "address": "1017 HR Rotterdam"
     })
     
     response = client.put(f"/api/users/4d9386e1-0eb5-4938-86b1-fbd119cbef3b", json={
@@ -155,7 +177,7 @@ def test_update_user_with_duplicate_email(test_db_setup_teardown):
         "email": "maxvettel@gmail.com",
         "age": 100,
         "marital_status": "married",
-        "address": "123 Main St"
+        "address": "1017 HR Rotterdam"
     })
     data = response.json()
     response.status_code == 400
@@ -223,7 +245,7 @@ def test_update_user_does_not_exist(test_db_setup_teardown):
         "email": "newjohndoe@gmail.com",
         "age": 100,
         "marital_status": "married",
-        "address": "123 Main St"
+        "address": "1017 HR Rotterdam"
     })
     data = response.json()
     assert response.status_code == 404

@@ -12,6 +12,16 @@ async def get_users(db: db_dependency):
     users = db.query(models.User).all()
     return {'status': 'success', 'users': users}
 
+@router.get("/{id}")
+async def get_user(id: str, db: db_dependency):
+    db_user = db.query(models.User).get(id)
+    
+    if not db_user:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
+                            detail=f'User with id: {id} not found')
+    
+    return {"status": "success", "user": db_user}
+
 @router.post("/", status_code=status.HTTP_201_CREATED)
 async def create_user(user: schemas.User, db: db_dependency):
     if db.query(models.User).filter(models.User.email == user.email).first():
