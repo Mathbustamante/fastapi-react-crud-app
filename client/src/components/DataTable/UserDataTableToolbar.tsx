@@ -1,7 +1,7 @@
 import { useState } from "react"
-import { useCreateUser } from "../hooks/useCreateUser"
-import { useUsersContext } from "../providers/UsersProvider"
-import { UserFormDialog } from "./UserFormDialog"
+import { useCreateUser } from "../../hooks/useCreateUser"
+import { useUsersContext } from "../../providers/UsersProvider"
+import { UserFormDialog } from "../Forms/UserFormDialog"
 
 export function UserDataTableToolbar() {
   const { getUsersRequest } = useUsersContext()

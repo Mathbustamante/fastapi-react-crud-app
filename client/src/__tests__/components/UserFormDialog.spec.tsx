@@ -1,7 +1,7 @@
 import { describe } from "@jest/globals"
 import "@testing-library/jest-dom"
 import { render, screen } from "@testing-library/react"
-import { UserFormDialog } from "../../components/UserFormDialog"
+import { UserFormDialog } from "../../components"
 import { MaritalStatus } from "../../types/user"
 
 describe("User Form Dialog Component", () => {

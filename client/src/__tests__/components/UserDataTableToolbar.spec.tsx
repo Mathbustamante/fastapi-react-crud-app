@@ -3,7 +3,7 @@ import "@testing-library/jest-dom"
 import { act, render, screen } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 
-import { UserDataTableToolbar } from "../../components/UserDataTableToolbar"
+import { UserDataTableToolbar } from "../../components/DataTable/UserDataTableToolbar"
 import { UsersProvider } from "../../providers/UsersProvider"
 
 describe("User Data Table Toolbar Component", () => {

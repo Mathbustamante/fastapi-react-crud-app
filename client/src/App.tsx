@@ -1,4 +1,4 @@
-import { UserDataTable } from "./components/UserDataTable"
+import { UserDataTable } from "./components"
 import { useUsersContext } from "./providers/UsersProvider"
 
 function App() {

@@ -1,8 +1,8 @@
 import * as Dialog from "@radix-ui/react-dialog"
 import { Cross2Icon } from "@radix-ui/react-icons"
 import { useState } from "react"
-import { DEFAULT_USER_VALUES } from "../lib/constants"
-import { MaritalStatus, User } from "../types/user"
+import { DEFAULT_USER_VALUES } from "../../lib/constants"
+import { MaritalStatus, User } from "../../types/user"
 
 type UserFormDialogProps = {
   disabled?: boolean

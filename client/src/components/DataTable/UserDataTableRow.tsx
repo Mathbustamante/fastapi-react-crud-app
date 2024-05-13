@@ -1,9 +1,10 @@
 import { useState } from "react"
-import { useDeleteUser } from "../hooks/useDeleteUser"
-import { useUpdateUser } from "../hooks/useUpdateUser"
-import { useUsersContext } from "../providers/UsersProvider"
-import { User } from "../types/user"
-import { UserFormDialog } from "./UserFormDialog"
+import { useDeleteUser } from "../../hooks/useDeleteUser"
+import { useUpdateUser } from "../../hooks/useUpdateUser"
+import { useUsersContext } from "../../providers/UsersProvider"
+import { User } from "../../types/user"
+import { UserFormDialog } from "../Forms/UserFormDialog"
+import { TableCell, TableRow } from "../Table"
 
 type UserTableRowProps = {
   user: User
@@ -37,14 +38,14 @@ export function UserDataTableRow({ user }: UserTableRowProps) {
           defaultValues={user}
         />
       )}
-      <tr key={user.id}>
-        <td className="p-4 align-middle truncate">{user.first_name}</td>
-        <td className="p-4 align-middle truncate">{user.last_name}</td>
-        <td className="p-4 align-middle truncate">{user.email}</td>
-        <td className="p-4 align-middle truncate">{user.age}</td>
-        <td className="p-4 align-middle truncate">{user.marital_status}</td>
-        <td className="p-4 align-middle truncate">{user.address}</td>
-        <td className="p-4 align-middle flex gap-x-2">
+      <TableRow key={user.id} className="even:bg-neutral-50">
+        <TableCell>{user.first_name}</TableCell>
+        <TableCell>{user.last_name}</TableCell>
+        <TableCell>{user.email}</TableCell>
+        <TableCell>{user.age}</TableCell>
+        <TableCell>{user.marital_status}</TableCell>
+        <TableCell>{user.address}</TableCell>
+        <TableCell className="flex gap-x-2">
           <button
             type="button"
             disabled={disabledButtons}
@@ -61,8 +62,8 @@ export function UserDataTableRow({ user }: UserTableRowProps) {
           >
             Delete
           </button>
-        </td>
-      </tr>
+        </TableCell>
+      </TableRow>
     </>
   )
 }

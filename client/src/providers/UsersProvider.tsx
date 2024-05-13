@@ -42,7 +42,9 @@ export function UsersProvider({ children }: { children: React.ReactNode }) {
 export const useUsersContext = () => {
   const context = useContext(UsersDataContext)
   if (!context) {
-    throw new Error("'useUsers' can only be used inside the UsersProvider")
+    throw new Error(
+      "'useUsersContext' can only be used inside the UsersProvider"
+    )
   }
   return context
 }

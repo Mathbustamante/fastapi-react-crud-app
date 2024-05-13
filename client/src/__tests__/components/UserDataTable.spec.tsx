@@ -1,7 +1,7 @@
 import { describe } from "@jest/globals"
 import "@testing-library/jest-dom"
 import { render, screen } from "@testing-library/react"
-import { UserDataTable } from "../../components/UserDataTable"
+import { UserDataTable } from "../../components"
 import { UsersProvider } from "../../providers/UsersProvider"
 import { MaritalStatus } from "../../types/user"
 

@@ -2,7 +2,7 @@ import { describe } from "@jest/globals"
 import "@testing-library/jest-dom"
 import { act, render, screen } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
-import { UserDataTableRow } from "../../components/UserDataTableRow"
+import { UserDataTableRow } from "../../components/DataTable/UserDataTableRow"
 import { UsersProvider } from "../../providers/UsersProvider"
 import { MaritalStatus } from "../../types/user"
 
